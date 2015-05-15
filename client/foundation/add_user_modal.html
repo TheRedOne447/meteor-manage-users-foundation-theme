@@ -1,0 +1,26 @@
+<template name="addUserModal_foundation">
+  <div id="addUser" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+      {{> addUserModalInner}}
+  </div>
+</template>
+
+
+<template name="addUserModalInner_foundation">
+    <h4>Add New User</h4>
+    <form>
+        <div class="row">
+            <div class="small-12 medium-10 small-centered columns">
+                <span>Name</span>
+                <input type="text" name="name">
+
+                <span>Email</span>
+                <input type="email" name="email">
+
+                <span>Password</span>
+                <input type="password" name="password">
+            </div>
+        </div>
+        <button type="button" data-action="submitAddUser" class="button">Add User</button>
+    </form>
+    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</template>

@@ -1,0 +1,43 @@
+<template name="updateAccountModal_foundation">
+	<div id="updateaccount" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+		{{> updateAccountModalInner}}
+	</div>
+</template>
+
+<template name="updateAccountModalInner_foundation">
+	{{#with userInScope}}
+		<h4>Update {{email}}</h4>
+		<div class="row">
+			<div class="small-12 columns">
+				<label>Name
+					<input type="text" data-user-id="{{_id}}" class="admin-user-info" name="profile.name" value="{{profile.name}}" placeholder="{{email}}">
+				</label>
+			</div>
+		</div>
+		{{#if roles}}
+			<ul class="unstyled">
+				{{#each roles}}
+					<li>
+						<span data-user-id="{{../_id}}" class="remove-role"><i class="fa fa-trash"></i></span>
+						<span>{{this}}</span>
+					</li>
+				{{/each}}
+			</ul>
+		{{else}}
+			This account has no roles.
+		{{/if}}
+
+		{{#if ../unsetRoles}}
+			<button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button dropdown">Add Role</button><br>
+			<ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true">
+				{{#each ../unsetRoles}}
+				<li><a href="#" class="add-role" data-user-id="{{../_id}}">{{this}}</a></li>
+				{{/each}}
+				{{> reflowFoundation}}
+			</ul>
+		{{else}}
+		<em>All roles already set.</em>
+		{{/if}}
+		<a class="close-reveal-modal" aria-label="Close">&#215;</a>
+	{{/with}}
+</template>

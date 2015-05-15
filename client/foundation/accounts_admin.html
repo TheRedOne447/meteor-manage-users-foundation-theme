@@ -1,0 +1,60 @@
+<template name="accountsAdmin_foundation">
+    <div class="row accounts-search">
+        <div class="small-centered small-12 medium-6 columns">
+            <div class="row collapse">
+                <div class="small-9 medium-10 columns">
+                    <input type="text" class="search-input-filter" value="{{searchFilter}}">
+                </div>
+                <div class="small-3 medium-2 columns">
+                    <span class="postfix"><i class="fa fa-search"></i></span>
+                </div>
+            </div>
+            <button class="button" type="button" data-reveal-id="updateroles" href="#updateroles">Manage Roles</button>
+            <button class="button" type="button" data-reveal-id="addUser" href="#addUser"><i class="fa fa-plus"></i> Add User</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-centered small-12 medium-6 columns">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>UserId</th>
+                        <th>Roles</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each users}}
+                        <tr class="{{#if myself _id}}info{{/if}}">
+                            <td class="userActionIcons">
+                              {{#unless myself _id}}
+                                    <span data-reveal-id="deleteaccount" data-action="delete" href="#deleteaccount" class="clickable"><i class="fa fa-trash"></i></span>
+                                    <span data-reveal-id="updateaccount" data-action="update" href="#updateaccount" class="clickable"><i class="fa fa-pencil"></i></span>
+                                    <span data-reveal-id="infoaccount" data-action="info" href="#infoaccount" class="clickable"><i class="fa fa-info"></i></span>
+                                    {{#if isInRole 'admin'}}<span data-action="impersonate" class="clickable"><i class="fa fa-binoculars"></i></span>{{/if}}
+                              {{/unless}}
+                            </td>
+                            <td>
+                                {{#if profile.name}}
+                                    {{profile.name}}
+                                {{else}}
+                                    {{email}}
+                                {{/if}}
+                            </td>
+                            <td>{{email}}</td>
+                            <td>{{_id}}</td>
+                            <td>{{roles}}</td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{> updateRolesModal}}
+    {{> deleteAccountModal}}
+    {{> infoAccountModal}}
+    {{> updateAccountModal}}
+    {{> addUserModal}}
+</template>

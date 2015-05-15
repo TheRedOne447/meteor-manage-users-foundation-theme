@@ -1,0 +1,33 @@
+<template name="updateRolesModal_foundation">
+	<div id="updateroles" class="reveal-modal medium" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+		{{> updateRolesModalInner}}
+	</div>
+</template>
+
+<template name="updateRolesModalInner_foundation">
+	<h4>Update Roles</h4>
+		<ul class="unstyled">
+
+		{{#each roles}}
+			{{#if adminRole}}
+				<li>
+					<em>Admin Role</em>
+					<span>{{this.name}}</span>
+				</li>
+			{{else}}
+				<li>
+					<span class="remove-role"><i class="fa fa-trash"></i></span>
+					<span>{{this.name}}</span>
+				</li>
+			{{/if}}
+		{{/each}}
+	</ul>
+	<div>
+		<input type="text" class="add-role-input" value="">
+		<span>
+			<button class="button add-role disabled" type="button"><i class="fa fa-plus"></i> Create Role</button>
+		</span>
+	</div>
+
+	<a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</template>

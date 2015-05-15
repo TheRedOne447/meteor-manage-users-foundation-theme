@@ -1,0 +1,29 @@
+<template name="infoAccountModal_foundation">
+	<div id="infoaccount" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+		{{> infoAccountModalInner}}
+	</div>
+</template>
+
+<template name="infoAccountModalInner_foundation">
+		<h4>Account Info</h4>
+	{{#with userInScope}}
+	 			<strong>Name</strong>
+				<ul class="unstyled">
+					<li>
+					<span>
+						{{#if profile.name}}
+							{{profile.name}}
+						{{else}}
+							{{email}}
+						{{/if}}
+					</span>
+				</li>
+				<li class="list-group-item"><strong>Email</strong><span>{{email}}</span></li>
+				<li class="list-group-item"><strong>ID</strong><span>{{_id}}</span></li>
+				{{#each ../rolePairs}}
+					<li class="list-group-item"><strong>{{key}}</strong><span>{{value}}</span></li>
+				{{/each}}
+			</ul>
+			<a class="close-reveal-modal" aria-label="Close">&#215;</a>
+	{{/with}}
+</template>
