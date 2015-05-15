@@ -10,8 +10,11 @@ Package.describe({
   documentation: 'README.md'
 });
 
+
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
+  api.use(["templating"], "client");
+  api.use("manage-users");
   api.add_files('client/foundation/accounts_admin.html','client');
   api.add_files('client/foundation/delete_account_modal.html','client');
   api.add_files('client/foundation/info_account_modal.html','client');
@@ -19,6 +22,9 @@ Package.onUse(function(api) {
   api.add_files('client/foundation/update_roles_modal.html','client');
   api.add_files('client/foundation/add_user_modal.html','client');
   api.add_files('client/foundation/functions.js','client');
+  api.add_files('client/reflow_foundation.html','client');
+  api.add_files('client/reflow_foundation.js','client');
+
 });
 
 Package.onTest(function(api) {

@@ -1,3 +1,3 @@
-closeModal['foundation'] =  function(modal) {
+ManageUsers.closeModal['foundation'] =  function(modal) {
 	$(modal).foundation('reveal', 'close');
 };
